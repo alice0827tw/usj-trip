@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>環球影城 1.5 日極致攻略</title>
     <style>
-        :root { --primary: #2c3e50; --bg: #f5f6fa; --card: #ffffff; --express: #e74c3c; --food: #27ae60; --map: #3498db; --done: #7f8c8d; --parade: #f39c12; }
+        :root { --primary: #2c3e50; --bg: #f5f6fa; --card: #ffffff; --express: #e74c3c; --food: #27ae60; --map: #3498db; --done: #7f8c8d; --parade: #f39c12; --route-a: #c0392b; --route-b: #2980b9; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); margin: 0; padding: 0; color: #333; padding-bottom: 30px; }
         .header { background: var(--primary); color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .header h1 { margin: 0; font-size: 1.3rem; }
@@ -29,6 +29,15 @@
         .title { font-size: 1.15rem; font-weight: bold; margin-bottom: 6px; }
         .desc { font-size: 1rem; color: #555; margin-bottom: 12px; line-height: 1.5; }
         
+        /* 分流路線樣式 */
+        .route-container { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; margin-bottom: 15px; }
+        .route-box { border-radius: 8px; padding: 12px; border-left: 4px solid; background: #fafafa; }
+        .route-a { border-left-color: var(--route-a); }
+        .route-b { border-left-color: var(--route-b); }
+        .route-title { font-weight: bold; margin-bottom: 5px; font-size: 1.05rem; }
+        .route-a .route-title { color: var(--route-a); }
+        .route-b .route-title { color: var(--route-b); }
+
         /* 標籤樣式 */
         .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
         .tag { padding: 4px 8px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; }
@@ -38,7 +47,7 @@
         .tag.parade-tag { background: #fdebd0; color: #d35400; }
         
         /* 地圖按鈕樣式 */
-        .map-btn { display: block; background: var(--map); color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-size: 1rem; font-weight: bold; text-align: center; transition: 0.2s; }
+        .map-btn { display: block; background: var(--map); color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-size: 1rem; font-weight: bold; text-align: center; transition: 0.2s; margin-top: 8px; }
         .map-btn:active { transform: scale(0.98); background: #2980b9; }
     </style>
 </head>
@@ -102,38 +111,49 @@
     <div id="day2" class="content active">
         <div class="event">
             <div class="time">08:30</div>
-            <div class="title">提早入園熱身</div>
-            <div class="desc">一早請務必打開官方 App，確認今天的「日間遊行」與「夜間遊行」確切時間！可以先排一項沒在快通內的大型設施（如好萊塢美夢）。</div>
+            <div class="title">入園熱身</div>
+            <div class="desc">準備迎接精彩的一天！可先在好萊塢區周邊逛逛。</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Hollywood+Area" target="_blank">🗺️ 導航至 好萊塢區</a>
         </div>
 
         <div class="event">
-            <div class="time">09:30 - 11:30</div>
-            <div class="title">消耗彈性快通：飛天翼龍 & 大白鯊/侏羅紀乘船遊</div>
-            <div class="desc">趁上午把「不限時」的快通玩掉。大白鯊與侏羅紀乘船遊請擇一搭乘。</div>
-            <div class="tags">
-                <span class="tag express">⏱️ 彈性快通</span>
-                <span class="tag food">🍔 必吃：侏儸紀公園餐車（火雞腿）</span>
+            <div class="time">09:30 - 11:00</div>
+            <div class="title">消耗彈性快通：好友分流路線</div>
+            <div class="desc">依照對刺激設施的接受度，兵分兩路遊玩！大白鯊目前休園，溫和派改搭侏羅紀乘船遊。</div>
+            
+            <div class="route-container">
+                <!-- 刺激路線 -->
+                <div class="route-box route-a">
+                    <div class="route-title">🎢 路線 A：極限刺激派</div>
+                    <div class="desc">先使用快通搭乘**飛天翼龍**，接著排隊體驗好萊塢美夢或**名偵探柯南 XR 乘車遊**等刺激雲霄飛車。</div>
+                    <div class="tags"><span class="tag express">⏱️ 飛天翼龍 (快通)</span></div>
+                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+The+Flying+Dinosaur" target="_blank">🗺️ 導航至 飛天翼龍</a>
+                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Space+Fantasy+The+Ride" target="_blank" style="background:#7f8c8d;">🗺️ 導航至 柯南XR乘車遊(原太空幻想)</a>
+                </div>
+                <!-- 溫和路線 -->
+                <div class="route-box route-b">
+                    <div class="route-title">🍿 路線 B：溫和沉浸派</div>
+                    <div class="desc">前往劇院觀賞**名偵探柯南 4-D 現場表演星空寶石**，接著使用快通搭乘較溫和的**侏羅紀公園 - 乘船遊**。</div>
+                    <div class="tags"><span class="tag express">⏱️ 侏羅紀乘船遊 (快通)</span></div>
+                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Cinema+4-D+Theater" target="_blank">🗺️ 導航至 柯南 4-D 劇院</a>
+                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Jurassic+Park+The+Ride" target="_blank" style="background:#7f8c8d;">🗺️ 導航至 侏羅紀乘船遊</a>
+                </div>
             </div>
+            <div class="tags"><span class="tag food">🍔 必吃：侏儸紀公園餐車（火雞腿）</span></div>
         </div>
 
         <div class="event">
             <div class="time">11:30 - 13:00</div>
-            <div class="title">消耗彈性快通：哈利波特禁忌之旅</div>
-            <div class="desc">這項不限時，可以在午餐前後前往哈利波特區搭乘。</div>
+            <div class="title">哈利波特禁忌之旅</div>
+            <div class="desc">會合後，前往哈利波特區搭乘禁忌之旅（不限時快通），並在周邊享用午餐。</div>
             <div class="tags"><span class="tag express">⏱️ 彈性快通</span></div>
-        </div>
-
-        <div class="event highlight">
-            <div class="time">13:00 或 14:00 (依App為準)</div>
-            <div class="title">🎉 必看：環球日間大遊行</div>
-            <div class="desc">環球的遊行絕對是氣氛最高潮！請留意遊行路線通常在好萊塢區/紐約區。若遊行在 13:00，看完剛好去哈利波特；若在 14:00，則等玩完鷹馬飛行後趕緊出來主幹道卡位！</div>
-            <div class="tags"><span class="tag parade-tag">🎊 氣氛滿點・務必卡位</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Harry+Potter+and+the+Forbidden+Journey" target="_blank">🗺️ 導航至 哈利波特禁忌之旅</a>
         </div>
 
         <div class="event">
             <div class="time">13:30 - 14:00</div>
             <div class="title">鷹馬的飛行</div>
-            <div class="desc">在哈利波特區搭乘。</div>
+            <div class="desc">緊接在哈利波特區搭乘。注意！**13:30 準時去玩，玩完立刻快步離開前往紐約區看遊行！**</div>
             <div class="tags">
                 <span class="tag express">⏱️ 快通時段</span>
                 <span class="tag food">🍔 必喝：豬頭酒吧（奶油啤酒）</span>
@@ -141,17 +161,27 @@
             <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Flight+of+the+Hippogriff" target="_blank">🗺️ 導航至 鷹馬的飛行</a>
         </div>
 
+        <div class="event highlight">
+            <div class="time">14:00 準時開始</div>
+            <div class="title">🎉 必看：環球日間大遊行</div>
+            <div class="desc">鷹馬飛行結束後，請火速前往**紐約區**卡位觀賞遊行！這裡是遊行氣氛最好、最熱鬧的路段。</div>
+            <div class="tags"><span class="tag parade-tag">🎊 紐約區域・務必卡位</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+New+York+Area" target="_blank">🗺️ 導航至 紐約區域</a>
+        </div>
+
         <div class="event">
             <div class="time">15:30</div>
             <div class="title">進入超級任天堂世界</div>
-            <div class="desc">昨天打過小庫巴了！今天進去純粹享受遊樂設施。</div>
+            <div class="desc">看完遊行休息一下，準備進入任天堂世界。</div>
             <div class="tags"><span class="tag express">⏱️ 快通保證入園</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Super+Nintendo+World" target="_blank">🗺️ 導航至 超級任天堂世界</a>
         </div>
 
         <div class="event">
             <div class="time">15:30 - 16:00</div>
             <div class="title">瑪利歐賽車：庫巴的挑戰書</div>
             <div class="tags"><span class="tag express">⏱️ 快通時段</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Mario+Kart+Koopa's+Challenge" target="_blank">🗺️ 導航至 瑪利歐賽車</a>
         </div>
 
         <div class="event">
@@ -161,6 +191,7 @@
                 <span class="tag express">⏱️ 快通時段</span>
                 <span class="tag food">🍔 必吃：耀西小吃島（龜殼披薩餃）</span>
             </div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Yoshi's+Adventure" target="_blank">🗺️ 導航至 耀西冒險</a>
         </div>
 
         <div class="event">
@@ -168,13 +199,13 @@
             <div class="title">咚奇剛的瘋狂礦車</div>
             <div class="desc">體驗最新叢林擴建區！</div>
             <div class="tags"><span class="tag express">⏱️ 快通時段</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Donkey+Kong+Country" target="_blank">🗺️ 導航至 咚奇剛園區</a>
         </div>
 
-        <div class="event highlight">
-            <div class="time">19:00 - 19:45 (依App為準)</div>
-            <div class="title">✨ 必看：夜間遊行 / 城堡燈光秀</div>
-            <div class="desc">17:00 結束任天堂後，剛好吃個晚餐休息一下。接著回到主幹道觀賞華麗的夜間遊行（或哈利波特城堡的夜間魔法秀），為這趟環球之旅畫下完美句點！</div>
-            <div class="tags"><span class="tag parade-tag">🌟 魔幻夜景・完美收尾</span></div>
+        <div class="event">
+            <div class="time">17:00 之後</div>
+            <div class="title">補齊周邊與魔幻夜景</div>
+            <div class="desc">設施大滿貫達成！可以好好補拍晚上的任天堂園區與霍格華茲城堡，或是買齊周邊，悠閒地離開樂園。</div>
         </div>
 
         <div class="event">
