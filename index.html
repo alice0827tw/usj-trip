@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>環球影城 1.5 日極致攻略</title>
     <style>
-        :root { --primary: #2c3e50; --bg: #f5f6fa; --card: #ffffff; --express: #e74c3c; --food: #27ae60; --map: #3498db; --done: #7f8c8d; }
+        :root { --primary: #2c3e50; --bg: #f5f6fa; --card: #ffffff; --express: #e74c3c; --food: #27ae60; --map: #3498db; --done: #7f8c8d; --parade: #f39c12; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); margin: 0; padding: 0; color: #333; padding-bottom: 30px; }
         .header { background: var(--primary); color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .header h1 { margin: 0; font-size: 1.3rem; }
@@ -20,10 +20,12 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
         /* 行程卡片樣式 */
-        .event { background: var(--card); border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 5px solid var(--primary); }
+        .event { background: var(--card); border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 5px solid var(--primary); position: relative; overflow: hidden; }
         .event.completed { border-left-color: var(--done); opacity: 0.85; }
         .event.completed .time { color: var(--done); }
+        .event.highlight { border-left-color: var(--parade); background-color: #fffdf7; }
         .time { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin-bottom: 5px; }
+        .event.highlight .time { color: var(--parade); }
         .title { font-size: 1.15rem; font-weight: bold; margin-bottom: 6px; }
         .desc { font-size: 1rem; color: #555; margin-bottom: 12px; line-height: 1.5; }
         
@@ -33,6 +35,7 @@
         .tag.express { background: #fadbd8; color: var(--express); }
         .tag.food { background: #d5f5e3; color: var(--food); }
         .tag.done-tag { background: #eaeded; color: var(--done); }
+        .tag.parade-tag { background: #fdebd0; color: #d35400; }
         
         /* 地圖按鈕樣式 */
         .map-btn { display: block; background: var(--map); color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-size: 1rem; font-weight: bold; text-align: center; transition: 0.2s; }
@@ -47,69 +50,60 @@
 
     <!-- 頂部分頁按鈕 -->
     <div class="tabs">
-        <div class="tab active" onclick="switchTab('day1', this)">6/15 (第一天)</div>
-        <div class="tab" onclick="switchTab('day2', this)">6/16 (第二天)</div>
+        <div class="tab" onclick="switchTab('day1', this)">6/15 (已完成)</div>
+        <div class="tab active" onclick="switchTab('day2', this)">6/16 (第二天)</div>
     </div>
 
-    <!-- 第一天行程內容 (已更新為實際戰況) -->
-    <div id="day1" class="content active">
+    <!-- 第一天行程內容 (已完成) -->
+    <div id="day1" class="content">
         <div class="event completed">
             <div class="time">15:00</div>
             <div class="title">入園</div>
             <div class="tags"><span class="tag done-tag">✅ 已完成</span></div>
         </div>
-        
         <div class="event completed">
             <div class="time">15:20 - 16:30</div>
             <div class="title">小小兵樂園</div>
             <div class="desc">玩了小小兵瘋狂乘車遊。</div>
             <div class="tags"><span class="tag food">🍔 吃了：必吃的夾心餅乾</span></div>
         </div>
-
         <div class="event completed">
             <div class="time">16:40 - 17:00</div>
             <div class="title">侏儸紀公園</div>
             <div class="desc">觀賞恐龍遊行秀。</div>
         </div>
-
         <div class="event completed">
             <div class="time">17:00 - 18:00</div>
             <div class="title">超級任天堂世界</div>
             <div class="desc">拍照、手環解謎，成功挑戰小遊戲打小庫巴！</div>
         </div>
-        
         <div class="event completed">
             <div class="time">18:00 - 19:00</div>
             <div class="title">瑪莉歐咖啡店 (奇諾比奧咖啡店)</div>
             <div class="desc">享用美味的晚餐。</div>
             <div class="tags"><span class="tag food">🍔 吃了：招牌瑪利歐漢堡</span></div>
         </div>
-
         <div class="event completed">
             <div class="time">19:00 - 19:30</div>
             <div class="title">前往門口退稅店</div>
             <div class="desc">趕在 19:30 前抵達退稅中心辦理手續。</div>
         </div>
-
         <div class="event completed">
             <div class="time">19:50 - 20:20</div>
             <div class="title">最後園區逛街</div>
-            <div class="desc">把握閉園前最後的採買時光。</div>
         </div>
-
         <div class="event completed">
             <div class="time">20:30 - 21:00</div>
             <div class="title">離園與宵夜</div>
-            <div class="desc">回飯店路上，於便利商店購買吃的結束精實的第一天。</div>
         </div>
     </div>
 
-    <!-- 第二天行程內容 (已加入完整快通7與必吃) -->
-    <div id="day2" class="content">
+    <!-- 第二天行程內容 -->
+    <div id="day2" class="content active">
         <div class="event">
             <div class="time">08:30</div>
             <div class="title">提早入園熱身</div>
-            <div class="desc">可以排一項沒在快通內的大型設施（如好萊塢美夢）。</div>
+            <div class="desc">一早請務必打開官方 App，確認今天的「日間遊行」與「夜間遊行」確切時間！可以先排一項沒在快通內的大型設施（如好萊塢美夢）。</div>
         </div>
 
         <div class="event">
@@ -120,7 +114,6 @@
                 <span class="tag express">⏱️ 彈性快通</span>
                 <span class="tag food">🍔 必吃：侏儸紀公園餐車（火雞腿）</span>
             </div>
-            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+The+Flying+Dinosaur" target="_blank">🗺️ 導航至 飛天翼龍</a>
         </div>
 
         <div class="event">
@@ -128,13 +121,19 @@
             <div class="title">消耗彈性快通：哈利波特禁忌之旅</div>
             <div class="desc">這項不限時，可以在午餐前後前往哈利波特區搭乘。</div>
             <div class="tags"><span class="tag express">⏱️ 彈性快通</span></div>
-            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Harry+Potter+and+the+Forbidden+Journey" target="_blank">🗺️ 導航至 哈利波特禁忌之旅</a>
+        </div>
+
+        <div class="event highlight">
+            <div class="time">13:00 或 14:00 (依App為準)</div>
+            <div class="title">🎉 必看：環球日間大遊行</div>
+            <div class="desc">環球的遊行絕對是氣氛最高潮！請留意遊行路線通常在好萊塢區/紐約區。若遊行在 13:00，看完剛好去哈利波特；若在 14:00，則等玩完鷹馬飛行後趕緊出來主幹道卡位！</div>
+            <div class="tags"><span class="tag parade-tag">🎊 氣氛滿點・務必卡位</span></div>
         </div>
 
         <div class="event">
             <div class="time">13:30 - 14:00</div>
             <div class="title">鷹馬的飛行</div>
-            <div class="desc">同樣在哈利波特區，緊接在禁忌之旅後玩。</div>
+            <div class="desc">在哈利波特區搭乘。</div>
             <div class="tags">
                 <span class="tag express">⏱️ 快通時段</span>
                 <span class="tag food">🍔 必喝：豬頭酒吧（奶油啤酒）</span>
@@ -145,7 +144,7 @@
         <div class="event">
             <div class="time">15:30</div>
             <div class="title">進入超級任天堂世界</div>
-            <div class="desc">昨天已經打過小庫巴了！今天進去純粹享受遊樂設施。</div>
+            <div class="desc">昨天打過小庫巴了！今天進去純粹享受遊樂設施。</div>
             <div class="tags"><span class="tag express">⏱️ 快通保證入園</span></div>
         </div>
 
@@ -153,7 +152,6 @@
             <div class="time">15:30 - 16:00</div>
             <div class="title">瑪利歐賽車：庫巴的挑戰書</div>
             <div class="tags"><span class="tag express">⏱️ 快通時段</span></div>
-            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Mario+Kart+Koopa's+Challenge" target="_blank">🗺️ 導航至 瑪利歐賽車</a>
         </div>
 
         <div class="event">
@@ -163,7 +161,6 @@
                 <span class="tag express">⏱️ 快通時段</span>
                 <span class="tag food">🍔 必吃：耀西小吃島（龜殼披薩餃）</span>
             </div>
-            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Yoshi's+Adventure" target="_blank">🗺️ 導航至 耀西冒險</a>
         </div>
 
         <div class="event">
@@ -173,10 +170,17 @@
             <div class="tags"><span class="tag express">⏱️ 快通時段</span></div>
         </div>
 
+        <div class="event highlight">
+            <div class="time">19:00 - 19:45 (依App為準)</div>
+            <div class="title">✨ 必看：夜間遊行 / 城堡燈光秀</div>
+            <div class="desc">17:00 結束任天堂後，剛好吃個晚餐休息一下。接著回到主幹道觀賞華麗的夜間遊行（或哈利波特城堡的夜間魔法秀），為這趟環球之旅畫下完美句點！</div>
+            <div class="tags"><span class="tag parade-tag">🌟 魔幻夜景・完美收尾</span></div>
+        </div>
+
         <div class="event">
-            <div class="time">17:00 之後</div>
-            <div class="title">補齊周邊與魔幻夜景</div>
-            <div class="desc">設施都玩完啦！可以好好補拍晚上的任天堂園區，或是買齊昨晚漏掉的周邊，悠閒地離開樂園去市區吃大餐！</div>
+            <div class="time">20:00 之後</div>
+            <div class="title">離開樂園 ➔ 市區慶功宴</div>
+            <div class="desc">帶著滿滿的回憶離開樂園！回到市區吃頓豐盛的大餐。</div>
         </div>
     </div>
 
