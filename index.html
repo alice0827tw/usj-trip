@@ -1,1 +1,174 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>USJ攻略</title><link rel="stylesheet" href="style.css"></head><body><header class="hero"><h1>🎢 環球影城1.5日攻略</h1><p>切換 6/15 ｜ 6/16</p><button id="theme">🌙</button></header><div class="tabs"><button class="tab active" data-day="d1">6/15</button><button class="tab" data-day="d2">6/16</button></div><section id="d1" class="day active"></section><section id="d2" class="day"></section><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>環球影城 1.5 日極致攻略</title>
+    <style>
+        :root { --primary: #2c3e50; --bg: #f5f6fa; --card: #ffffff; --express: #e74c3c; --food: #27ae60; --map: #3498db; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); margin: 0; padding: 0; color: #333; padding-bottom: 30px; }
+        .header { background: var(--primary); color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 1.3rem; }
+        
+        /* 分頁切換樣式 */
+        .tabs { display: flex; background: white; border-bottom: 2px solid #ddd; position: sticky; top: 54px; z-index: 99; }
+        .tab { flex: 1; text-align: center; padding: 14px; font-weight: bold; color: #777; cursor: pointer; transition: 0.3s; font-size: 1.1rem; }
+        .tab.active { color: var(--primary); border-bottom: 4px solid var(--primary); background-color: #f8f9fa; }
+        
+        .content { padding: 15px; display: none; }
+        .content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* 行程卡片樣式 */
+        .event { background: var(--card); border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 5px solid var(--primary); }
+        .time { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin-bottom: 5px; }
+        .title { font-size: 1.15rem; font-weight: bold; margin-bottom: 6px; }
+        .desc { font-size: 1rem; color: #555; margin-bottom: 12px; line-height: 1.5; }
+        
+        /* 標籤樣式 */
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .tag { padding: 4px 8px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; }
+        .tag.express { background: #fadbd8; color: var(--express); }
+        .tag.food { background: #d5f5e3; color: var(--food); }
+        
+        /* 地圖按鈕樣式 */
+        .map-btn { display: block; background: var(--map); color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-size: 1rem; font-weight: bold; text-align: center; transition: 0.2s; }
+        .map-btn:active { transform: scale(0.98); background: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🎢 環球影城 1.5 日極致攻略</h1>
+    </div>
+
+    <!-- 頂部分頁按鈕 -->
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('day1', this)">6/15 (第一天)</div>
+        <div class="tab" onclick="switchTab('day2', this)">6/16 (第二天)</div>
+    </div>
+
+    <!-- 第一天行程內容 -->
+    <div id="day1" class="content active">
+        <div class="event">
+            <div class="time">15:00</div>
+            <div class="title">入園與好萊塢區打卡</div>
+            <div class="desc">使用 1.5 日券入園，打開 App 抽任天堂夜間整理券（視運氣）。</div>
+            <div class="tags"><span class="tag food">🍔 必吃：瑪利歐咖啡店（帽子鬆餅）</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Mario+Cafe" target="_blank">🗺️ 導航至 瑪利歐咖啡店</a>
+        </div>
+        
+        <div class="event">
+            <div class="time">15:30</div>
+            <div class="title">小小兵樂園與非快通設施</div>
+            <div class="desc">趁下午先玩快通沒包含的設施，例如水世界、大白鯊。</div>
+            <div class="tags"><span class="tag food">🍔 必吃：小小兵樂園餐車（夾心餅乾）</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Minion+Park" target="_blank">🗺️ 導航至 小小兵樂園</a>
+        </div>
+
+        <div class="event">
+            <div class="time">17:30</div>
+            <div class="title">避開人潮提早晚餐</div>
+            <div class="desc">前往紐約區提早用餐，避開尖峰。</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Louie's+N.Y.+Pizza+Parlor" target="_blank">🗺️ 導航至 路易斯紐約披薩</a>
+        </div>
+
+        <div class="event">
+            <div class="time">19:00</div>
+            <div class="title">霍格華茲夜景與夜間遊行</div>
+            <div class="desc">進入活米村拍攝神秘夜景，隨後觀賞水面煙火或遊行。</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Wizarding+World+of+Harry+Potter" target="_blank">🗺️ 導航至 哈利波特魔法世界</a>
+        </div>
+    </div>
+
+    <!-- 第二天行程內容 -->
+    <div id="day2" class="content">
+        <div class="event">
+            <div class="time">08:30</div>
+            <div class="title">提早入園與熱身</div>
+            <div class="desc">直衝飛天翼龍或好萊塢美夢乘車遊。</div>
+            <div class="tags"><span class="tag food">🍔 必吃：侏儸紀公園餐車（火雞腿）</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Jurassic+Park" target="_blank">🗺️ 導航至 侏儸紀公園區</a>
+        </div>
+
+        <div class="event">
+            <div class="time">10:00</div>
+            <div class="title">消耗「不限時」快速通關</div>
+            <div class="desc">利用上午時間玩掉快通剩下的 3 項不限時設施，並吃午餐。</div>
+        </div>
+
+        <div class="event">
+            <div class="time">13:30 - 14:00</div>
+            <div class="title">鷹馬飛行 (哈利波特區)</div>
+            <div class="tags">
+                <span class="tag express">⏱️ 快通時段</span>
+                <span class="tag food">🍔 必喝：豬頭酒吧（奶油啤酒）</span>
+            </div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Flight+of+the+Hippogriff" target="_blank">🗺️ 導航至 鷹馬飛行</a>
+        </div>
+
+        <div class="event">
+            <div class="time">15:30</div>
+            <div class="title">進入超級任天堂世界</div>
+            <div class="desc">門口買「能量手環」綁定 App。若有發咖啡店整理券先拿！</div>
+            <div class="tags"><span class="tag express">⏱️ 快通保證入園</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Super+Nintendo+World" target="_blank">🗺️ 導航至 超級任天堂世界</a>
+        </div>
+
+        <div class="event">
+            <div class="time">15:30 - 16:00</div>
+            <div class="title">瑪利歐賽車：庫巴的挑戰書</div>
+            <div class="tags"><span class="tag express">⏱️ 快通時段</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Mario+Kart+Koopa's+Challenge" target="_blank">🗺️ 導航至 瑪利歐賽車</a>
+        </div>
+
+        <div class="event">
+            <div class="time">16:00 - 16:30</div>
+            <div class="title">耀西冒險</div>
+            <div class="tags">
+                <span class="tag express">⏱️ 快通時段</span>
+                <span class="tag food">🍔 必吃：耀西小吃島（龜殼披薩餃）</span>
+            </div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Yoshi's+Adventure" target="_blank">🗺️ 導航至 耀西冒險</a>
+        </div>
+
+        <div class="event">
+            <div class="time">16:30 - 17:00</div>
+            <div class="title">咚奇剛的瘋狂礦車 (x2)</div>
+            <div class="desc">體驗最新叢林擴建區，玩 2 次！</div>
+            <div class="tags"><span class="tag express">⏱️ 快通時段</span></div>
+        </div>
+
+        <div class="event">
+            <div class="time">17:00 - 18:30</div>
+            <div class="title">手環解謎與晚餐</div>
+            <div class="desc">挑戰 5 個小遊戲打小庫巴。</div>
+            <div class="tags"><span class="tag food">🍔 晚餐：奇諾比奧咖啡店</span></div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Kinopio's+Cafe" target="_blank">🗺️ 導航至 奇諾比奧咖啡店</a>
+        </div>
+
+        <div class="event">
+            <div class="time">20:00 之後</div>
+            <div class="title">市區宵夜慶祝</div>
+            <div class="desc">回到大阪市區，找間居酒屋吃點燒肉或烤鳥串，用手機支付快速結帳，好好犒賞這兩天的精實戰鬥！</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Osaka+Izakaya+Yakiniku+Yakitori" target="_blank">🗺️ 搜尋大阪市區 居酒屋/燒肉/燒鳥</a>
+        </div>
+    </div>
+
+    <!-- 分頁切換腳本 -->
+    <script>
+        function switchTab(tabId, element) {
+            // 移除所有 tab 和 content 的 active 狀態
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+            
+            // 為點擊的 tab 和對應的 content 加上 active 狀態
+            element.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+            
+            // 切換分頁時將畫面捲動回最上方
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
